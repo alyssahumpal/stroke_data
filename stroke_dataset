@@ -1,0 +1,37 @@
+SELECT 
+*
+FROM
+`runningqueries.health_data.stroke_data`
+
+**Removing rows where important data is missing**
+
+DELETE `runningqueries.health_data.stroke_data`
+WHERE bmi = "N/A"
+
+**Running query to return all important data in relevant order**
+
+SELECT 
+stroke, 
+gender, 
+age, 
+bmi, 
+heart_disease, 
+hypertension, 
+ever_married, 
+Residence_type, 
+avg_glucose_level, 
+id
+ FROM `runningqueries.health_data.stroke_data` 
+ WHERE stroke = 1
+GROUP BY stroke, 
+gender, 
+age, 
+bmi, 
+heart_disease, 
+hypertension, 
+ever_married, 
+Residence_type, 
+avg_glucose_level, 
+id
+ORDER BY age 
+DESC
